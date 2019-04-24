@@ -16,7 +16,7 @@ class Home extends Component {
       <div>
        
         <br/><br/>
-        <a href="https://github.com/login/oauth/authorize?client_id=68b7722dbfbe7fea24cb">Sign in with Github</a>
+        <a href="/auth/github">Sign in with Github</a>
       </div>
     );
   }
