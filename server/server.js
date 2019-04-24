@@ -29,6 +29,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+  // placeholder for custom user serialization
+  // null is for errors
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  // placeholder for custom user deserialization.
+  // maybe you are getoing to get the user from mongo by id?
+  // null is for errors
+  done(null, user);
+});
 // API routes
 require('./routes')(app);
 if (isDev) {
