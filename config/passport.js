@@ -1,8 +1,10 @@
 var GITHUB_CLIENT_ID = '68b7722dbfbe7fea24cb';
 var GITHUB_CLIENT_SECRET = '23b06dc0c0de43c1a2914d63f2235f0b57e4bd74';
 var passport = require('passport');
+var config = require('./config');
 var GitHubStrategy = require('passport-github2').Strategy;
-const user = require('../server/models/User')
+const User = require('../server/models/User')
+
 
 
 passport.use(new GitHubStrategy({
@@ -16,12 +18,24 @@ function(accessToken, refreshToken, profile, done) {
     Name : profile.displayName,
     profile_pic: profile._json.avatar_url
   }
-  User.findOrCreate( userData, function (err, user) {
-    console.log(userData);
-    return done(err, user);
+  const newItem = new User({
+  Github_id: userData.GITHUB_ID,
+  Name: userData.Name,
+  Profile_pic: userData.profile_pic
   });
+  newItem.save().then(
+    data => console.log(data)
+  );
+
+  // User.find()
+  // .sort({ data: -1})
+  // .then(data => console.log(data));
+  // user.findOrCreate( userData, function (err, user) {
+  //   console.log(userData);
+  //   return done(err, user);
+  // });
 
   // console.log(userData);
-  // return done(null, profile);
+  return done(null, profile);
 }
 ));
