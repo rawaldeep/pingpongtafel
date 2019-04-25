@@ -1,7 +1,7 @@
 {
   "name": "pingpongtafel",
   "version": "1.0.0",
-  "description": "ping pong planer",
+  "description": "MERN stack project boilerplate",
   "author": "Eugene Cheung",
   "repository": {
     "type": "git",
