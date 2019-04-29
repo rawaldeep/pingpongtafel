@@ -10,7 +10,7 @@ module.exports = (app) =>{
   app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
     const { query } = req;
-        const { code } = query;
+     const { code } = query;
         if(!code){
             return res.send({
                 success: false,

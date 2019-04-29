@@ -13,11 +13,13 @@ passport.use(new GitHubStrategy({
   callbackURL: "http://localhost:3000/auth/github/callback"
 },
 function(accessToken, refreshToken, profile, done) {
+  console.log(profile);
   const userData = {
     GITHUB_ID : profile.id,
     Name : profile.displayName,
     profile_pic: profile._json.avatar_url
   }
+
   User.findOne({Github_id: userData.GITHUB_ID})
   .then(data =>{
     if(!data){
@@ -27,12 +29,13 @@ function(accessToken, refreshToken, profile, done) {
         Profile_pic: userData.profile_pic
         });
         newItem.save().then(
-          data => console.log(data)
+          data => {console.log(data);
+          return done(null, data);}
         );
-        return done(null, profile);
+        
     }else{
       console.log("user exists");
-      return done(null, profile);
+      return done(null, data);
     }
   })
   

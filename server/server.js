@@ -6,10 +6,10 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-
+const User = require('../server/models/User')
+const cookieSession = require('cookie-session');
 //passportjs
 var passport = require('passport');
-
 const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
 
@@ -27,21 +27,32 @@ mongoose.Promise = global.Promise;
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(passport.initialize());
-app.use(passport.session());
+
+
 
 passport.serializeUser(function(user, done) {
   // placeholder for custom user serialization
   // null is for errors
-  done(null, user);
+  done(null, user.id);
 });
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function(id, done) {
   // placeholder for custom user deserialization.
   // maybe you are getoing to get the user from mongo by id?
   // null is for errors
-  done(null, user);
+  User.findById(id).then((user)=>{
+    done(null, user);
+  })
 });
+app.use(cookieSession({
+  name: 'session',
+  maxAge: 24*60*60*1000,
+  keys:['secretkey'],
+  httpOnly: false,
+  secure: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 // API routes
 require('./routes')(app);
 if (isDev) {
