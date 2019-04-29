@@ -23,7 +23,6 @@ const checkAuth = ()=>{
     return true
   }else{
     return false
-    
   }
 }
 
