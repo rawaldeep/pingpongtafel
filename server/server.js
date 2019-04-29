@@ -33,14 +33,14 @@ app.use(express.json());
 passport.serializeUser(function(user, done) {
   // placeholder for custom user serialization
   // null is for errors
-  done(null, user.id);
+  done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function(user, done) {
   // placeholder for custom user deserialization.
   // maybe you are getoing to get the user from mongo by id?
   // null is for errors
-  User.findById(id).then((user)=>{
+  User.findById(user.id).then((user)=>{
     done(null, user);
   })
 });
@@ -53,6 +53,16 @@ app.use(cookieSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.get('/logout', function(req, res){
+  res.clearCookie("session")
+  res.clearCookie("session.sig")
+  req.logout();
+  res.redirect('/');
+});
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/')
+}
 // API routes
 require('./routes')(app);
 if (isDev) {

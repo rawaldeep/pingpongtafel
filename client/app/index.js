@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Cookies from 'js-cookie';
-
+// import Cookies from 'js-cookie';
+import cookie from 'react-cookie'
 import {
   BrowserRouter as Router,
   Route,
@@ -18,22 +18,17 @@ import Home from './components/Home/Home';
 import overview from './components/overview/overview';
 
 import './styles/styles.scss';
-const checkAuth = ()=>{
-  if(document.cookie) {
-    return true
-  }else{
-    return false
-  }
-}
-
+// const checkAuth = ()=>{
+// console.log(cookie.load('logged_in'))
+// }
+// checkAuth();
 render((
-  
   <Router>
     <App>
       <Switch>
         <Route exact path="/" component={Home}/> 
-        {document.cookie ? <Route path="/overview" component={overview}/>: false}
-        
+        {document.cookie ? <Route path="/overview" component={overview}/>: <Route component={Home}/> }
+        {/* <Route path="/overview" component={overview}/> */}
         <Route component={NotFound}/>
       </Switch>
     </App>
