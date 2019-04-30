@@ -1,16 +1,12 @@
 import React from 'react';
-
-import { Link } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 const Header = () => (
   <header>
-    <Link to="/">Home</Link>
-
-    <nav>
-      <Link to="/helloworld">Hello World</Link>
-    </nav>
-
-    <hr />
+    
+      
+    
   </header>
 );
 

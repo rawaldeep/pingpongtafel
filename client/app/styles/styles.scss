@@ -5,28 +5,62 @@
 $color-cyan: #63C3D1;
 $color-darkblue: #16232E;
 
-#butn {
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-    background: $color-cyan;
+ body {
+    background: $color-darkblue;
+}
+
+hr {
     border: solid white 1px;
 }
 
-main a {
+#butn {
+    border-radius: 50%;
+    height: 130px;
+    width: 130px;
+    // background: $color-cyan;
+    border: solid white 3px;
+    font-weight: bold;
+    font-size: 20px;
     font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: normal;
-    text-align: center;
-    color:black;
-}
-
-#container {
-    background-color: $color-darkblue;
+    // color: $color-darkblue;
 }
 
 h1 {
+    font-family: Montserrat;
     color: white;
+}
+
+h5 {
+    color: white;
+}
+
+#main {
+    background: $color-darkblue;
+    text-align: center;
+}
+
+#contain {
+width: 128px;
+height: 126px;
+left: 14px;
+top: 18px;
+background: rgb(255, 255, 255);
+}
+
+#midden Button {
+display:flex;
+margin:0 auto;
+color:white;
+}
+
+#midden Button:hover {
+    background-color:white;
+    color:black;
+    font-weight:bold;
+    box-sizing: border-box;
+    
+}
+
+th {
+    text-align: center;
 }

@@ -3,7 +3,8 @@ var GITHUB_CLIENT_SECRET = '23b06dc0c0de43c1a2914d63f2235f0b57e4bd74';
 var passport = require('passport');
 var config = require('./config');
 var GitHubStrategy = require('passport-github2').Strategy;
-const User = require('../server/models/User')
+const User = require('../server/models/User');
+
 
 
 
@@ -13,7 +14,6 @@ passport.use(new GitHubStrategy({
   callbackURL: "http://localhost:3000/auth/github/callback"
 },
 function(accessToken, refreshToken, profile, done) {
-  console.log(profile);
   const userData = {
     GITHUB_ID : profile.id,
     Name : profile.displayName,
@@ -37,6 +37,7 @@ function(accessToken, refreshToken, profile, done) {
       console.log("user exists");
       return done(null, data);
     }
+    
   })
   
   
