@@ -34,7 +34,7 @@ class Profile extends Component {
         return(
             <div>
         <Header />
-            <h1> {this.state.user}'s Profile</h1>
+            <h1 id="profHeader"> {this.state.user}'s Profile</h1>
         <Row>
             <Col>
             </Col>
