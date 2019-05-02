@@ -5,27 +5,29 @@ import Table from 'react-bootstrap/Table';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from '@material-ui/core/Button';
 import Cookies from 'js-cookie';
-import decode from 'jwt-decode'
+import decode from 'jwt-decode';
 import axios from 'axios';
-const decoded = decode(Cookies.get('token'));
-const token = decoded
+const token = Cookies.get('token')
+if(token){
+  const decoded = decode(token);
+  const tokenDecoded = decoded;
+}
  class overview extends Component {
      
   constructor(props){
     super(props);
   this.state = {
-    users: '',
-    token: token
+
  }
 }
-conmponentDidMount(){
-  axios.get('/api/account/profile',{ headers: { 'crossDomain': true, 'Content-Type': 'application/json' } })
-  .then(res=> {
-    this.setState({ users: res.data }).then(profileState => {
-      console.log(JSON.stringify(this.state.users))
-    }); //It sets the state asynchronously
-  })
-}
+// conmponentDidMount(){
+//   axios.get('/api/account/profile',{ headers: { 'crossDomain': true, 'Content-Type': 'application/json' } })
+//   .then(res=> {
+//     this.setState({ users: res.data }).then(profileState => {
+//       console.log(JSON.stringify(this.state.users))
+//     }); //It sets the state asynchronously
+//   })
+// }
 
   render() {
     return (

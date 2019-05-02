@@ -3,7 +3,6 @@ const fs = require('fs');
 const historyApiFallback = require('connect-history-api-fallback');
 const mongoose = require('mongoose');
 const path = require('path');
-const axios = require('axios');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -61,14 +60,12 @@ app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
-axios.get('/api/account/profile/:id')
-  .then(res => {
-     this.setState({ user: req.user });
- })
+
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/')
 }
+// require('./routes/User');
 // API routes
 require('./routes')(app);
 if (isDev) {

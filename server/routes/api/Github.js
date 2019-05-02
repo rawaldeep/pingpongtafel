@@ -25,7 +25,8 @@ module.exports = (app) =>{
     const payload = {gitid};
     const token = jwt.sign(payload, secret);
     res.cookie('token', token, {httpOnly: false,
-      secure: false })
+      secure: false });
+    // res.json({token});
     res.redirect('/overview');
   }
 );
