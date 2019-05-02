@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { getdecodedToken } from '../../api/token.js';
-import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -35,16 +34,26 @@ class Profile extends Component {
         return(
             <div>
         <Header />
-            <h1>Profile</h1>
+            <h1> {this.state.user}'s Profile</h1>
         <Row>
             <Col>
-            <div id="contain">
-            <img src= {this.state.profilepic} />
-            </div>
             </Col>
             <Col>
-            <h5>Name: {this.state.user}</h5>
-            <h5>Group:
+           
+            <img id="profielfoto" src= {this.state.profilepic} />
+            
+            </Col>
+            <Col>
+          
+            </Col>
+        </Row>
+
+        <Row>
+            <Col></Col>
+            <Col>
+            <div id="profieltje">
+             <h5>Name: {this.state.user}</h5>
+            <h5>Group: <br />
                 <select>
                     <option></option>
                     <option>Ant-Lamarr</option>
@@ -52,9 +61,11 @@ class Profile extends Component {
                 </select>
             </h5>
             <button type="submit">submit</button>
-            </Col>
+            </div></Col>
+            
+            <Col></Col>
         </Row>
-        <Footer />
+    
         <h5>
             <a href="/overview">Overview</a>
         </h5>

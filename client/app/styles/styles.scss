@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
 @import 'vendor/normalize';
-
+@import url('https://fonts.googleapis.com/css?family=Hind+Madurai:600');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 $color-cyan: #63C3D1;
 $color-darkblue: #16232E;
 
@@ -21,17 +22,19 @@ hr {
     border: solid white 3px;
     font-weight: bold;
     font-size: 20px;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;;
     // color: $color-darkblue;
 }
 
 h1 {
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;;
     color: white;
 }
 
 h5 {
     color: white;
+    font-family: 'Hind Madurai', sans-serif;
+ 
 }
 
 #main {
@@ -44,7 +47,7 @@ width: 128px;
 height: 126px;
 left: 14px;
 top: 18px;
-background: rgb(255, 255, 255);
+
 }
 
 #midden Button {
@@ -59,6 +62,22 @@ color:white;
     font-weight:bold;
     box-sizing: border-box;
     
+}
+
+#profielfoto {
+    width:340px;
+    height: 340px;
+    border:3px solid white;
+    margin:0 auto;
+    border-radius: 50%;
+
+
+}
+
+#profieltje {
+ text-align:left;
+ margin-top:40px;
+
 }
 
 th {
