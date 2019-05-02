@@ -4,7 +4,6 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Redirect }  from 'react-router';
 
 class Profile extends Component {
 
@@ -16,7 +15,6 @@ class Profile extends Component {
             user: '',
             profilepic: ''
         };
-        this.handleClick = this.handleClick.bind(this);
 
     }
   
@@ -32,20 +30,8 @@ class Profile extends Component {
                 )
         })
     }
-   
-        
-        
-    
-    handleClick(e){
-        e.preventDefault();
-        this.setState({
-            redirect: true});
-        }
 
     render() {
-        if(this.state.redirect){
-            return <Redirect push to = '/Overview'/>;
-        }
         return(
             <div>
         <Header />
@@ -75,10 +61,10 @@ class Profile extends Component {
         </Row>
         <Footer />
         <h5>
-           <button onClick={this.handleClick}>Overview</button>
+            <a href="/overview">Overview</a>
         </h5>
         <h5>
-            <a href="/logout">Logout</a>
+            <a href="/">Logout</a>
         </h5>
     </div>
         )

@@ -1,36 +1,52 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Table from 'react-bootstrap/Table';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import TimeSlots from '../TimeSlots/TimeSlots';
-import Cookies from 'js-cookie';
-import decode from 'jwt-decode';
-import axios from 'axios';
+import { getdecodedToken } from '../../api/token.js';
 var id="midden";
-const token = Cookies.get('token')
-if(token){
-  const decoded = decode(token);
-  const tokenDecoded = decoded;
-}
+
  class overview extends Component {
      
-  constructor(props){
+  constructor(props) {
     super(props);
-  this.state = {
 
- }
+    this.state = {
+        decodedToken: getdecodedToken(),
+        redirect: false,
+        userId: '',
+        Team: ''
+    };
+
 }
-// conmponentDidMount(){
-//   axios.get('/api/account/profile',{ headers: { 'crossDomain': true, 'Content-Type': 'application/json' } })
-//   .then(res=> {
-//     this.setState({ users: res.data }).then(profileState => {
-//       console.log(JSON.stringify(this.state.users))
-//     }); //It sets the state asynchronously
-//   })
-// }
+
+componentDidMount(){
+  fetch('/api/users/'+this.state.decodedToken)
+  .then(response => response.json())
+  .then(response => {
+      const{ _id, Team } = response
+      if(Team != ''){
+        this.setState({
+          userId: _id,
+          Team: Team}
+          )
+      }
+      else{
+        this.setState({
+          redirect: true
+        })
+      }
+      
+  })
+}
+
 
   render() {
+    // if (this.state.redirect) {
+    //   return <Redirect push to='/Profile' />
+    // }
     return (
       <div>
       <Header />
@@ -49,8 +65,8 @@ if(token){
     </thead>
     <tbody>
       <tr id="midden">
-        <TimeSlots/>
-        <TimeSlots/>
+        <TimeSlots day="Maandag"/>
+        <TimeSlots day="Dinsdag"/>
         <TimeSlots/>
         <TimeSlots/>
         <TimeSlots/>

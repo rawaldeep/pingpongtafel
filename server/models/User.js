@@ -12,10 +12,18 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
-  isDeleted: {
+  Team: {
+    type: String,
+    default: ''
+  },
+  ReservationHistory: {
+    type: Array,
+    default: []
+  },
+  isDeleted:{
     type: Boolean,
     default: false
-    }
+  }
 });
 
 module.exports = mongoose.model('User', UserSchema);

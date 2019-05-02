@@ -16,7 +16,7 @@ const TimeslotSchema = new mongoose.Schema({
   // available
   available: {
     type: Boolean,
-    default: true
+    default: false
     },
 
   });
