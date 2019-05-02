@@ -3,10 +3,11 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Table from 'react-bootstrap/Table';
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import Button from '@material-ui/core/Button';
+import TimeSlots from '../TimeSlots/TimeSlots';
 import Cookies from 'js-cookie';
 import decode from 'jwt-decode';
 import axios from 'axios';
+var id="midden";
 const token = Cookies.get('token')
 if(token){
   const decoded = decode(token);
@@ -33,6 +34,7 @@ if(token){
     return (
       <div>
       <Header />
+    
       <h1>PingPong Schedule</h1>
       <Jumbotron fluid >
     <Table bordered variant="dark" responsive="sm">
@@ -47,95 +49,11 @@ if(token){
     </thead>
     <tbody>
       <tr id="midden">
-        <td>
-        <Button>10:30</Button>
-        <hr/>
-        <Button>11:00</Button>
-        <hr/>
-        <Button >12:15</Button>
-        <hr/>
-        <Button>12:30</Button>
-        <hr/>
-        <Button>12:45</Button>
-        <hr/>
-        <Button>13:00</Button>
-        <hr/>
-        <Button>13:15</Button>
-        <hr/>
-        <Button>15:15</Button>
-        <hr/>
-        <Button>15:30</Button>
-        </td>
-        <td>
-        <Button>10:30</Button>
-        <hr/>
-        <Button>11:00</Button>
-        <hr/>
-        <Button>12:15</Button>
-        <hr/>
-        <Button>12:30</Button>
-        <hr/>
-        <Button>12:45</Button>
-        <hr/>
-        <Button>13:00</Button>
-        <hr/>
-        <Button>13:15</Button>
-        <hr/>
-        <Button>15:15</Button>
-        <hr/>
-        <Button>15:30</Button>
-        </td>
-        <td><Button>10:30</Button>
-        <hr/>
-        <Button>11:00</Button>
-        <hr/>
-        <Button>12:15</Button>
-        <hr/>
-        <Button>12:30</Button>
-        <hr/>
-        <Button>12:45</Button>
-        <hr/>
-        <Button>13:00</Button>
-        <hr/>
-        <Button>13:15</Button>
-        <hr/>
-        <Button>15:15</Button>
-        <hr/>
-        <Button>15:30</Button></td>
-        <td><Button>10:30</Button>
-        <hr/>
-        <Button>11:00</Button>
-        <hr/>
-        <Button>12:15</Button>
-        <hr/>
-        <Button>12:30</Button>
-        <hr/>
-        <Button>12:45</Button>
-        <hr/>
-        <Button>13:00</Button>
-        <hr/>
-        <Button>13:15</Button>
-        <hr/>
-        <Button>15:15</Button>
-        <hr/>
-        <Button>15:30</Button></td>
-        <td><Button>10:30</Button>
-        <hr/>
-        <Button>11:00</Button>
-        <hr/>
-        <Button>12:15</Button>
-        <hr/>
-        <Button>12:30</Button>
-        <hr/>
-        <Button>12:45</Button>
-        <hr/>
-        <Button>13:00</Button>
-        <hr/>
-        <Button>13:15</Button>
-        <hr/>
-        <Button>15:15</Button>
-        <hr/>
-        <Button>15:30</Button></td>
+        <TimeSlots/>
+        <TimeSlots/>
+        <TimeSlots/>
+        <TimeSlots/>
+        <TimeSlots/>
       </tr>
     </tbody>
   </Table>
@@ -146,7 +64,9 @@ if(token){
       <a href="/logout">Logout</a>
       </h5>
       </Jumbotron>
+  
       <Footer />
+  
     </div>
     )
   }
