@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import Table from 'react-bootstrap/Table';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import TimeSlots from '../TimeSlots/TimeSlots';
@@ -59,7 +58,7 @@ handleClick(e) {
       </h5>
       </Jumbotron>
   
-      <Footer />
+
   
 </div>
     );

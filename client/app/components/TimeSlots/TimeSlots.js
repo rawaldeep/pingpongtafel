@@ -25,7 +25,8 @@ class TimeSlots extends React.Component {
     }
     render() {
       const times = this.state.timeSlots.map((tijd, key) =>
-    <span><Button key={tijd.id} onClick={this.handleClick}> {tijd.time}</Button><hr/></span> );
+    <span><Button key={tijd.id} onClick={this.handleClick}> {tijd.time}</Button><hr/>
+    </span> );
       
       
       if (this.state.redirect) {
