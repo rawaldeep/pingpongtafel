@@ -86,7 +86,7 @@ class UndateInfo extends Component {
 
     render() {
         if(this.state.team !== ''){
-            return <Redirect push to = '/Profile'/>;
+            return <Redirect push to = '/Overview'/>;
         }
         return(
             <div>
