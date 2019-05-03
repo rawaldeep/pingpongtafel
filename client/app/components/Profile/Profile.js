@@ -27,12 +27,18 @@ class Profile extends Component {
         .then(response => {
             const{ Name, Team,  Profile_pic } = response
             console.log(response)
+            if(Team != ''){
             this.setState({
                 user: Name,
                 profilepic: Profile_pic,
                 team: Team
             }
                 )
+        }else{
+            this.setState({
+                redirect: true
+              })
+        }
         })
     }
    
