@@ -14,7 +14,8 @@ class Profile extends Component {
         this.state = {
             decodedToken: getdecodedToken(),
             user: '',
-            profilepic: ''
+            profilepic: '',
+            team: ''
         };
         this.handleClick = this.handleClick.bind(this);
 
@@ -24,11 +25,13 @@ class Profile extends Component {
         fetch('/api/users/'+this.state.decodedToken)
         .then(response => response.json())
         .then(response => {
-            const{ Name, Profile_pic } = response
+            const{ Name, Team,  Profile_pic } = response
             console.log(response)
             this.setState({
                 user: Name,
-                profilepic: Profile_pic}
+                profilepic: Profile_pic,
+                team: Team
+            }
                 )
         })
     }
@@ -58,14 +61,8 @@ class Profile extends Component {
             </Col>
             <Col>
             <h5>Name: {this.state.user}</h5>
-            <h5>Group:
-                <select>
-                    <option></option>
-                    <option>Ant-Lamarr</option>
-                    <option>Ant-Giertz</option>
-                </select>
+            <h5>Group: {this.state.team}
             </h5>
-            <button type="submit">submit</button>
             </Col>
         </Row>
         <Footer />

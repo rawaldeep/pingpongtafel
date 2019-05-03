@@ -18,4 +18,24 @@ module.exports = (app) =>{
   })
 
   });
+
+
+  app.put('/api/usersupdate/:id', function(req, res){
+    console.log(req.params.id);
+    console.log(req.body);
+    User.findByIdAndUpdate( req.params.id ,{
+      Name : req.body.user,
+      Team : req.body.team
+    },function(err){
+      if(err){
+        res.send(err)
+      }else{
+        res.send({data: 'updated'})
+      }
+    })
+
+  });
+
+
+
 }
