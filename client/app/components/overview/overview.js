@@ -44,9 +44,9 @@ componentDidMount(){
 
 
   render() {
-    // if (this.state.redirect) {
-    //   return <Redirect push to='/Profile' />
-    // }
+    if (this.state.redirect) {
+      return <Redirect push to='/UpdateInfo' />
+    }
     return (
       <div>
       <Header />

@@ -53,16 +53,11 @@ class Profile extends Component {
         <Row>
             <Col>
             <div id="contain">
-            <img id="contain" src= {this.state.profilepic} />
+            <img src= {this.state.profilepic} />
             </div>
             </Col>
             <Col>
-            <h5>
-            <label>
-                Name: 
-                <input type="text" name="name" value = {this.state.user} />
-            </label>
-            </h5>
+            <h5>Name: {this.state.user}</h5>
             <h5>Group:
                 <select>
                     <option></option>

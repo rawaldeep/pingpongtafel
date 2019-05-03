@@ -12,7 +12,7 @@ class TimeSlots extends React.Component {
       }
       handleClick(e) {
         e.preventDefault();
-        console.log(e.currentTarget.name);
+        console.log(e.currentTarget.dataset.day);
         this.setState({redirect: true});
     }
     render() {
@@ -22,7 +22,7 @@ class TimeSlots extends React.Component {
       return(
         <td>
           
-      <Button name={this.props.day} onClick={this.handleClick}>10:30 </Button>
+      <Button data-day={this.props.day} onClick={this.handleClick}>10:30 </Button>
       <hr/>
       <Button onClick={this.handleClick}>11:00</Button>
       <hr/>
