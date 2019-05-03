@@ -4,33 +4,27 @@ import Footer from '../Footer/Footer';
 import Table from 'react-bootstrap/Table';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import TimeSlots from '../TimeSlots/TimeSlots';
-import Cookies from 'js-cookie';
-import decode from 'jwt-decode';
-import axios from 'axios';
-var id="midden";
-const token = Cookies.get('token')
-if(token){
-  const decoded = decode(token);
-  const tokenDecoded = decoded;
-}
+import Button from '@material-ui/core/Button/Button';
+import { Redirect } from 'react-router';
  class overview extends Component {
      
   constructor(props){
     super(props);
   this.state = {
-
+    
  }
+ this.handleClick = this.handleClick.bind(this);
 }
-// conmponentDidMount(){
-//   axios.get('/api/account/profile',{ headers: { 'crossDomain': true, 'Content-Type': 'application/json' } })
-//   .then(res=> {
-//     this.setState({ users: res.data }).then(profileState => {
-//       console.log(JSON.stringify(this.state.users))
-//     }); //It sets the state asynchronously
-//   })
-// }
+handleClick(e) {
+  e.preventDefault();
+  this.setState({redirect: true, day:e.currentTarget.dataset.day})
+  console.log(e.currentTarget.dataset.day)
+}
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect push to="/Profile" />;
+    }
     return (
       <div>
       <Header />
@@ -67,9 +61,8 @@ if(token){
   
       <Footer />
   
-    </div>
-    )
+</div>
+    );
   }
 }
 export default overview;
-
