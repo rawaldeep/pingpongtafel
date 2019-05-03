@@ -6,7 +6,16 @@ class TimeSlots extends React.Component {
     constructor(props){
       super(props);
       this.state = {
-
+        timeSlots: [
+          {id:1, time:10.30} ,
+          {id:2, time:11.00},
+          {id:3, time:12.15},
+          {id:4, time:12.30},
+          {id:5, time:12.45},
+          {id:6, time:13.00},
+          {id:7, time:13.15},
+          {id:8, time:15.15},
+          {id:9, time:15.30}]
       };
       this.handleClick = this.handleClick.bind(this);
       }
@@ -15,30 +24,17 @@ class TimeSlots extends React.Component {
         this.setState({redirect: true});
     }
     render() {
+      const times = this.state.timeSlots.map((time, key) =>
+      <Button key={time.id} onClick={this.handleClick}>{time.time}</Button><hr/>);
+      
+      
       if (this.state.redirect) {
         return <Redirect push to="/Reservation" />;
       }
       return(
         <td>
-          
-      <Button onClick={this.handleClick}>10:30</Button>
-      <hr/>
-      <Button onClick={this.handleClick}>11:00</Button>
-      <hr/>
-      <Button onClick={this.handleClick}>12:15</Button>
-      <hr/>
-      <Button onClick={this.handleClick}>12:30</Button>
-      <hr/>
-      <Button onClick={this.handleClick}>12:45</Button>
-      <hr/>
-      <Button onClick={this.handleClick}>13:00</Button>
-      <hr/>
-      <Button onClick={this.handleClick}>13:15</Button>
-      <hr/>
-      <Button onClick={this.handleClick}>15:15</Button>
-      <hr/>
-      <Button onClick={this.handleClick}>15:30</Button>
-      </td>
+        {times}
+        </td>
       )
   }
 }

@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer';
 import Table from 'react-bootstrap/Table';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import TimeSlots from '../TimeSlots/TimeSlots';
-import Button from '@material-ui/core/Button/Button';
+
 import { Redirect } from 'react-router';
  class overview extends Component {
      
